@@ -1,0 +1,113 @@
+.container-grid {
+    display: grid;
+    width: 98%;
+    height: inherit;
+    grid-template-columns: 2fr 500px;
+}
+
+.left-template {
+    position: relative;
+    overflow: hidden;
+}
+
+.background-hero {
+    position: absolute;
+    bottom: -75px;
+    z-index: -1;
+}
+.set-hero {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+}
+
+.background-hero .set-hero .hero2 {
+    transform: translate(-150px, 50px);
+}
+
+.button-back-to-home a {
+    color: blue;
+}
+
+.title-page {
+    margin: 1rem 0 0;
+}
+
+.title-page h1 {
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    font-size: 3.5rem;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.button-back-to-home {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.button-back-to-home a {
+    font-size: 1.5rem;
+    padding: 1rem 5rem;
+}
+
+.about-title,
+.team-title {
+    display: flex;
+    justify-content: center;
+}
+.about-title p.glass3,
+.team-title p.glass3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    width: 35%;
+    margin: 0 0 1rem;
+}
+
+.about-desc {
+    font-size: 1rem;
+    margin: 1rem auto 2rem;
+    width: 90%;
+}
+
+.about-desc p {
+    text-indent: 3rem;
+    padding: 1rem 1rem;
+    text-align: justify;
+}
+
+.right-template {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-template {
+    padding: 2rem 0.5rem 1rem;
+}
+
+.team-template {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 1rem 0 0;
+}
+
+.team-desc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.team-desc p {
+    width: 125px;
+    text-align: center;
+    margin: 0.5rem 0 0;
+    color: black;
+    font-weight: 500;
+}

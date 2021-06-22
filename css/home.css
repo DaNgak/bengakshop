@@ -1,0 +1,398 @@
+div.navbar {
+    width: 90%;
+    padding: 0.5rem 0;
+    position: absolute;
+    top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-button {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.navbar .logo {
+    font-size: 30px;
+    align-self: center;
+    margin-left: 1.5rem;
+}
+
+.navbar .logo a {
+    color: black;
+}
+
+.navbar .search-bar input,
+.navbar .search-bar button {
+    text-align: center;
+    font-size: 1.5rem;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-bottom: 3px solid black;
+}
+.navbar .search-bar button {
+    padding: 5px;
+    border: none;
+}
+
+.button-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    border: 5px solid rgba(121, 135, 232, 0.7);
+    box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 50%;
+}
+
+.button-bar a {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 45px;
+    color: rgba(0, 0, 0, 1);
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
+}
+
+.container-home-page {
+    width: 90%;
+    height: 85%;
+    position: absolute;
+    bottom: 20px;
+}
+
+div.button-bar.seller-bar,
+div.button-bar.logout-bar {
+    width: auto;
+    border-radius: 10px;
+}
+
+div.button-bar.seller-bar a,
+div.button-bar.logout-bar a {
+    padding: 0 1rem;
+}
+
+.more-button {
+    justify-self: end;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 1rem 0;
+}
+
+.button-seeall,
+.button-more {
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.button-seeall a,
+.button-more a {
+    padding: 0.5rem 2rem;
+    color: black;
+}
+
+.container-title {
+    font-size: 2.5rem;
+    letter-spacing: 0.1em;
+    color: rgba(0, 0, 0, 1);
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.product-show {
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.product-show .product {
+    margin-top: 10px;
+    width: 200px;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+.product-show .product a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    color: black;
+}
+.product-show .product .product-top {
+    position: absolute;
+    top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-show .product .product-image {
+    height: 170px;
+}
+
+.product-show .product .product-image img {
+    width: 170px !important;
+    height: 170px !important;
+    border-radius: 25px;
+    border: 1px solid black;
+}
+.product-show .product .product-top .product-title {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 90%;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.product-show .product .product-bottom {
+    display: flex;
+    width: 80%;
+    position: absolute;
+    bottom: 10px;
+    justify-content: space-between;
+    font-size: 1rem;
+}
+
+/* POP UP Bayar */
+#buying-popup {
+    /* display: none; */
+    display: block;
+}
+
+#buying-popup .full-blur {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    /* background-color: pink; */
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(20px);
+}
+
+#buying-popup .full-blur .pop-up-click {
+    position: relative;
+    width: 70%;
+    display: grid;
+    grid-template-columns: 350px auto;
+    background: rgba(255, 255, 255, 0.05);
+    border: 3px solid #3d29df;
+    box-sizing: border-box;
+    box-shadow: inset 0px 0px 25px rgba(51, 51, 51, 0.3);
+    backdrop-filter: blur(100px);
+    /* Note: backdrop-filter has minimal browser support */
+    border-radius: 50px;
+}
+
+.pop-up-click-left,
+.pop-up-click-right {
+    padding: 1rem;
+}
+.pop-up-click-right {
+    padding-right: 2rem;
+}
+
+.pop-up-click-left .brand-image,
+.pop-up-click-left .size-bar,
+.pop-up-click-left .button-add-to-cart {
+    margin: 1rem auto;
+    width: 300px;
+}
+
+.pop-up-click-left .brand-image {
+    margin-top: 0;
+}
+.pop-up-click-left .brand-image img {
+    border-radius: 25px;
+    width: 300px;
+    height: 375px;
+}
+.pop-up-click-left .size-bar.glass4 {
+    height: calc((1.5rem + 1rem) * 3);
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.pop-up-click-left .size-bar .size-info {
+    text-align: center;
+    /* padding: 1rem; */
+    border-bottom: 1px solid black;
+    width: 100%;
+}
+
+.pop-up-click-left .size-bar .size-info label {
+    cursor: pointer;
+    width: 100%;
+    padding: 0.5rem 5rem;
+    font-size: 1.3rem;
+}
+
+.pop-up-click-left .button-add-to-cart {
+    margin-top: 2rem;
+}
+
+.pop-up-click-left .button-add-to-cart a {
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: 1.5rem;
+    text-align: center;
+    color: black;
+}
+
+.pop-up-click-right .brand-info {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 5fr 2fr;
+    margin-bottom: 1rem;
+}
+
+.pop-up-click-right .brand-info .brand-kind-and-price,
+.pop-up-click-right .brand-info .brand-add-to-list-and-favorit {
+    display: flex;
+    text-align: center;
+    margin: 0.5rem 0;
+    padding: 0 2rem 0 0;
+    justify-content: space-between;
+}
+
+.pop-up-click-right .brand-info .brand-kind-and-price {
+    grid-area: 2 / 1;
+}
+
+.pop-up-click-right .brand-info .brand-add-to-list-and-favorit {
+    grid-area: 3 / 1;
+}
+
+.pop-up-click-right .brand-info .brand-add-to-list-and-favorit .brand-to-list,
+.pop-up-click-right .brand-info .brand-add-to-list-and-favorit .brand-to-favo {
+    text-align: center;
+    width: 40%;
+}
+
+.pop-up-click-right .brand-info .brand-kind-and-price .brand-kind {
+    width: 35%;
+    padding: 0.5rem 0;
+    font-size: 1.3rem;
+}
+.pop-up-click-right .brand-info .brand-kind-and-price .brand-price {
+    width: 50%;
+    font-size: 1.3rem;
+    padding: 0.5rem 0;
+}
+
+.brand-add-to-list-and-favorit .brand-to-list a,
+.brand-add-to-list-and-favorit .brand-to-favo a {
+    font-weight: 500;
+    width: 100%;
+    padding: 0.5rem 0;
+}
+
+.brand-add-to-list-and-favorit .brand-to-list a {
+    color: blue;
+}
+
+.brand-add-to-list-and-favorit .brand-to-favo a {
+    color: red;
+}
+.pop-up-click-right .brand-info .score-bar {
+    width: 90%;
+    grid-area: span 3 / 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 1rem;
+    margin: 0 0 0 auto;
+}
+
+.pop-up-click-right .brand-info .score-bar .score-number {
+    font-size: 3rem;
+    text-align: center;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+}
+.pop-up-click-right .brand-info .score-bar .user-buying {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    text-align: center;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.pop-up-click-right .brand-info .brand-title h1 {
+    margin: 0;
+    font-size: 1.7rem;
+    font-weight: 500;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.pop-up-click-right .brand-desc {
+    height: 425px;
+    padding: 1rem 1.5rem;
+    overflow-y: auto;
+    box-shadow: inset -4px -4px 20px rgba(0, 0, 0, 0.4), -2px 2px 3px rgba(172, 165, 228, 0.8), -2px -2px 2px rgba(36, 0, 255, 0.58);
+    background: rgba(255, 255, 255, 0.6);
+    /* box-shadow: inset -4px -4px 20px rgba(0, 0, 0, 0.4); */
+    border-radius: 25px;
+    flex-direction: column;
+}
+.pop-up-click-right .brand-desc h3.title-desc {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+.pop-up-click-right .brand-desc p {
+    text-indent: 2rem;
+    text-align: justify;
+}
+
+.pop-up-click .close-button {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    border: 5px solid rgba(236, 84, 105, 0.87);
+    background: #5cecec;
+}
+
+.pop-up-click .close-button a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(236, 84, 105, 0.87);
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.d-none {
+    display: none !important;
+}
