@@ -139,10 +139,19 @@
             return false;
         }
 
-        $queryinsert = "INSERT INTO barang VALUES (
-            '', '$namabarang', '$fotobarang', '$deskripsibarang', 
-            '$merekbarang', $stokbarang, $hargabarang, $jenisbarang, '$namatoko'
-        )";
+        $queryinsert = "INSERT INTO barang (
+                            id_barang, 
+                            nama_barang, 
+                            foto_barang, 
+                            deskripsi_barang, 
+                            merek, 
+                            stok, 
+                            harga, 
+                            fk_id_jenis_barang, 
+                            fk_nama_toko) 
+                        VALUES ( NULL, '$namabarang', '$fotobarang', '$deskripsibarang', 
+                            '$merekbarang', $stokbarang, $hargabarang, $jenisbarang, '$namatoko'
+                        )";
 
         mysqli_query($conn, $queryinsert);
 

@@ -67,6 +67,28 @@
     $query = "SELECT * FROM satuan_barang";
     $datasatuanbarang = queryarray($query);
 
+    $query = "SELECT
+        *,
+        jk.id_jenis_pengiriman,
+        jk.nama_pengiriman,
+        jk.harga_pengiriman,
+        jb.id_jenis_pembayaran,
+        jb.nama_pembayaran,
+        b.id_barang,
+        b.nama_barang,
+        b.fk_nama_toko,
+        b.fk_id_jenis_barang,
+        sb.id_satuan_barang,
+        sb.nama_satuan,
+        sb.jumlah_barang,
+        (harga * (total_pembelian_barang * sb.jumlah_barang) + jk.harga_pengiriman) as totalhargabeli
+    FROM pembelian p
+    INNER JOIN jenis_pengiriman jk ON jk.id_jenis_pengiriman = p.fk_jenis_pengiriman
+    INNER JOIN jenis_pembayaran jb ON jb.id_jenis_pembayaran = p.fk_id_jenis_pembayaran
+    INNER JOIN barang b ON b.id_barang = p.fk_id_barang
+    INNER JOIN satuan_barang sb ON sb.id_satuan_barang = p.fk_satuan_barang
+    WHERE id_pembelian=$idpembelian";
+    $datatransaksibarang = queryarray($query)[0];
 ?>
 
 <!DOCTYPE html>
@@ -93,7 +115,8 @@
             #dataproduksaya,
             #datapengiriman,
             #datapembayaran,
-            #profile-penjual {
+            #profile-penjual,
+            #datapesanansaya {
                 margin: 300px 0;
                 padding-top: 75px;
             }
@@ -192,7 +215,7 @@
                         <p>
                             <a class="btn btn-warning" href="editprofilepenjual.php">Edit Data</a>
                             <a class="btn btn-primary mx-5" href="#dataproduksaya">Lihat Data Produk Saya</a>
-                            <a class="btn btn-primary" href="#">Lihat Data Penjualan Saya</a>
+                            <a class="btn btn-primary" href="#datapesanansaya">Lihat Data Penjualan Saya</a>
                             <a class="btn btn-primary mx-5" href="#datapengiriman">Support Pengiriman</a>
                             <a class="btn btn-primary" href="#datapembayaran">Support Pembayaran</a>
                         </p>
@@ -281,10 +304,10 @@
                 <div class="to-bottom"></div>
                 <h3 class="text-center mb-3">Data Layanan Pengiriman</h3>
                 <div class="input-group my-3">
-                    <input type="text" class="form-control" placeholder="Cari Data Layanan Pengiriman Berdasarkan Nama Pengiriman" aria-describedby="button-addon2" />
-                    <button class="btn btn-outline-primary" type="button" id="button-addon2">Cari!!!</button>
+                    <input type="text" class="form-control" placeholder="Cari Data Layanan Pengiriman Berdasarkan Nama Pengiriman" id="inputcaridatapengiriman" />
+                    <button class="btn btn-outline-primary" type="button" onclick="alert('Cari Jodoh ka Ngab');">Cari!!!</button>
                 </div>
-                <div class="overflow-auto">
+                <div class="overflow-auto" id="containerdatapengiriman">
                     <table class="table table-bordered">
                         <thead class="table-info">
                             <tr class="text-center">
@@ -313,10 +336,10 @@
                 <div class="to-bottom"></div>
                 <h3 class="text-center mb-3">Data Layanan Pembayaran</h3>
                 <div class="input-group my-3">
-                    <input type="text" class="form-control" placeholder="Cari Data Layanan Pengiriman Berdasarkan Nama Pembayaran" aria-describedby="button-addon2" />
-                    <button class="btn btn-outline-primary" type="button" id="button-addon2">Cari!!!</button>
+                    <input type="text" class="form-control" placeholder="Cari Data Layanan Pengiriman Berdasarkan Nama Pembayaran" id="inputcaridatapembayaran" />
+                    <button class="btn btn-outline-primary" type="button" onclick="alert('Cari Jodoh ka Ngab');">Cari!!!</button>
                 </div>
-                <div class="overflow-auto">
+                <div class="overflow-auto" id="containerdatapembayaran">
                     <table class="table table-bordered">
                         <thead class="table-info">
                             <tr class="text-center">
@@ -344,10 +367,50 @@
                 <h3 class="text-center mb-3">Data Produk Saya</h3>
                 <a href="tambahdataproduct.php" class="btn btn-primary width-100 my-3">Tambah Data Barang</a>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Cari Data Berdasarkan Nama Barang atau Jenis Barang atau Merek Barang" aria-describedby="button-addon2" />
-                    <button class="btn btn-outline-primary" type="button" id="button-addon2">Cari!!!</button>
+                    <input type="text" class="form-control" placeholder="Cari Data Berdasarkan Nama Barang atau Jenis Barang atau Merek Barang" id="inputcaridatabarang" />
+                    <button class="btn btn-outline-primary" type="button" onclick="alert('Cari Jodoh ka Ngab');">Cari!!!</button>
                 </div>
-                <div class="overflow-auto">
+                <div class="overflow-auto" id="containerdatabarang">
+                    <table class="table table-bordered">
+                        <thead class="table-info">
+                            <tr class="text-center">
+                                <th scope="col">No</th>
+                                <th scope="col">Nama Barang</th>
+                                <th scope="col">Foto Barang</th>
+                                <th scope="col">Merek Barang</th>
+                                <th scope="col">Jenis Barang</th>
+                                <th scope="col">Harga Barang</th>
+                                <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1; ?>
+                            <?php foreach($databarang as $databarangsatuan) : ?>
+                                <tr>
+                                    <td class="text-center"><?= $i ?></td>
+                                    <td><?= $databarangsatuan["nama_barang"] ?></td>
+                                    <td class="text-center"><img src="../img/fotobarang/<?= $databarangsatuan["foto_barang"] ?>" alt="Foto <?= $databarangsatuan["nama_barang"] ?>" width="100" height="100"></td>
+                                    <td><?= $databarangsatuan["merek"] ?></td>
+                                    <td><?= $databarangsatuan["jenis_barang"] ?></td>
+                                    <td>Rp. <?= $databarangsatuan["harga"] ?></td>
+                                    <td class="text-center"><a href="detaildataproduct.php?id_barang=<?= $databarangsatuan["id_barang"] ?>" class="btn btn-secondary">Detail</a></td>
+                                </tr>
+                                <?php $i++; ?>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="d-flex justify-content-center align-items-center" id="datapesanansaya">
+            <div class="container-custom">
+                <h3 class="text-center mb-3">Data Pesanan Saya</h3>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Cari Data Berdasarkan Nama Barang atau Jenis Barang atau Merek Barang" id="inputcaridatatransaksi" />
+                    <button class="btn btn-outline-primary" type="button" onclick="alert('Cari Jodoh ka Ngab');">Cari!!!</button>
+                </div>
+                <div class="overflow-auto" id="containerdatatransaksi">
                     <table class="table table-bordered">
                         <thead class="table-info">
                             <tr class="text-center">
@@ -380,5 +443,6 @@
             </div>
         </section>
         <script src="../js/custom.js"></script>
+        <script src="../js/scriptajaxpenjual.js"></script>
     </body>
 </html>

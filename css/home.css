@@ -173,12 +173,11 @@ div.button-bar.logout-bar a {
 }
 
 /* POP UP Bayar */
-#buying-popup {
-    /* display: none; */
+#buyingpopup {
     display: block;
 }
 
-#buying-popup .full-blur {
+#buyingpopup .full-blur {
     position: absolute;
     left: 0;
     right: 0;
@@ -193,7 +192,7 @@ div.button-bar.logout-bar a {
     backdrop-filter: blur(20px);
 }
 
-#buying-popup .full-blur .pop-up-click {
+#buyingpopup .full-blur .pop-up-click {
     position: relative;
     width: 70%;
     display: grid;
@@ -367,7 +366,6 @@ div.button-bar.logout-bar a {
     margin-bottom: 0.5rem;
 }
 .pop-up-click-right .brand-desc p {
-    text-indent: 2rem;
     text-align: justify;
 }
 
